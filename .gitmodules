@@ -1,0 +1,3 @@
+[submodule "web/widgets/mk-widgets"]
+	path = web/widgets/mk-widgets
+	url = https://github.com/vitaliy-pashkov/mk-widgets.git

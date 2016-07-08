@@ -3,7 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 $config = [
 	'id' => 'basic',
-	'name'=>'DDT Platform',
+	'name' => 'DDT Platform',
 	'basePath' => dirname(__DIR__),
 	'bootstrap' => ['log'],
 	'components' => [
@@ -43,6 +43,14 @@ $config = [
 			'enableStrictParsing' => false,
 			'rules' => [
 				// ...
+			],
+		],
+		'view' => [
+			'renderers' => [
+				'tpl' => [
+					'class' => 'yii\smarty\ViewRenderer',
+					//'cachePath' => '@runtime/Smarty/cache',
+				],
 			],
 		],
 

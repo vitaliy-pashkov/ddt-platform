@@ -9,19 +9,19 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-/**
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
-class WidgetsAsset extends AssetBundle
+
+class DDTPlatformAsset extends AssetBundle
 {
-    public $basePath = '@webroot/widgets';
-    public $baseUrl = '@web/widgets';
+    public $basePath = '@webroot/widgets/ddt-platform-widgets';
+    public $baseUrl = '@web/widgets/ddt-platform-widgets';
     public $css = [
-        'jjsonviewer/jjsonviewer.css',
     ];
     public $js = [
-		'jjsonviewer/jjsonviewer.js',
+		'ddt-entity.js',
+		'ddt-app.js',
+		'ddt-page.js',
+		'ddt-test-page.js',
+
     ];
     public $depends = [
         'app\assets\AppAsset',

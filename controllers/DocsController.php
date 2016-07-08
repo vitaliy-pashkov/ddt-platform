@@ -12,9 +12,16 @@ use app\models\ContactForm;
 class DocsController extends Controller
 	{
 
-	public function actionIndex()
+	public function actionIndex($docFile)
 		{
-		return $this->render('index');
+
+		$jsonDoc = file_get_contents('../web/ddt-platform'.$docFile);
+//		$doc = json_decode($json, true);
+
+//		echo $jsonDoc ; die;
+		return $this->render('index', [
+			'jsonDoc'=>$jsonDoc
+		]);
 		}
 
 

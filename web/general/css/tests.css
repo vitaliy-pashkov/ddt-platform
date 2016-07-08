@@ -1,0 +1,24 @@
+
+
+.tests-page {
+
+}
+
+.tests-page .entity-playground {
+	/*display: inline-block;*/
+	/*width: 45%;*/
+	min-height: 100px;
+	background: #ffeeee;
+}
+
+.tests-page .entity-doc {
+	/*display: inline-block;*/
+	/*width: 45%;*/
+	min-height: 100px;
+	background: #eeffee;
+}
+
+.test-frame {
+	width: 100%;
+	min-height: 800px;
+}

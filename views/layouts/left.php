@@ -14,28 +14,10 @@
         </form>
         <!-- /.search form -->
 
-        <?= dmstr\widgets\Menu::widget(
+        <?= app\widgets\DDTMenu\DDTMenuWidget::widget(
             [
                 'options' => ['class' => 'sidebar-menu'],
-                'items' => [
-                    [
-                        'label' => 'Dictionary',
-                        'items' => [
-                            [
-                                'label' => 'Docs',
-                                'items' => [
-                                    ['label' => 'Dictionary', 'url' => ['docs/index', 'entity'=>'dictionary']],
-                                ],
-                            ],
-                            [
-                                'label' => 'Tests',
-                                'items' => [
-                                    ['label' => 'Dictionary', 'url' => ['tests/index', 'entity'=>'dictionary']],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
+				'ddtPlatformRoot' => '../web/ddt-platform'
             ]
         ) ?>
 
