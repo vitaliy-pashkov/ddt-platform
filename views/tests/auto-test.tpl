@@ -22,14 +22,14 @@
                     <a href="/tests/test?testJsFile={$fileName}">{$fileName}</a>
                     </div>
                 <div class="col-md-2">
-                <span class="status">waiting</span>
+                <span class="test-status">waiting</span>
                     </div>
             </div>
         {/foreach}
     </div>
 
-    <div id="frame" class="col-md-6">
-        <iframe class="test-frame" id="test-frame" src=""></iframe>
+    <div id="frames" class="col-md-6">
+        {*<iframe class="test-frame" id="test-frame" src=""></iframe>*}
     </div>
 
 </div>

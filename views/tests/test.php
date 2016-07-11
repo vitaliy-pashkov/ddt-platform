@@ -1,17 +1,4 @@
 <?php
-use yii\helpers\Html;
-$this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-	<?php $this->head() ?>
-	<?= Html::csrfMetaTags() ?>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<?php $this->beginBody() ?>
-
-
-<?php
 /* @var $this yii\web\View */
 
 $this->title = 'Tests';
@@ -27,6 +14,22 @@ $this->registerJsFile('/ddt-platform' . $testJsFile, [
 
 <div class="tests-page row">
 
+	<div id="test-result" class="col-md-6 test-result">
+	</div>
+
+	<div class="col-md-6">
+		<p id="test-status" class="test-status">
+			waiting...
+		</p>
+		<p id="test-error" class="test-error">
+		</p>
+	</div>
+
+
+</div>
+
+<div class="tests-page row">
+
 	<div id="entity-playground" class="col-md-6 entity-playground">
 		<div id="element">
 		</div>
@@ -36,16 +39,3 @@ $this->registerJsFile('/ddt-platform' . $testJsFile, [
 	</div>
 
 </div>
-
-<div class="tests-page row">
-
-	<div id="test-result" class="col-md-6 test-result">
-	</div>
-
-</div>
-
-
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>

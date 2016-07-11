@@ -31,28 +31,25 @@ window.app.pages.tests = Class(
 
 		checkTestResult: function ()
 			{
-			var sample = this.declareDom();
-			var audit = this.entity.element;
+			var sample = {
+				test: 'qwe',
+				test1: 1,
+				arrayTest: [
+					{
+						test2: 2,
+						test3: 3,
+					},
+					{
+						test2: 4,
+						test3: 5,
+					},
+				]
+			};
+			var audit = this.entity.jsonTest;
 
-			var compareResult = this.compareDom(sample, audit);
-
+			var compareResult = this.compareJson(sample, audit);
 			this.printCompareResult(compareResult);
 			},
-
-		declareDom: function ()
-			{
-
-
-			var html =
-				"<div class='qwe wer' qwe='asd'>" +
-				"<p class='zxc'>asd</p>" +
-				"</div>" +
-				"<div class='qwe'>" +
-				"<p class='zxc'>dfg</p>" +
-				"</div>";
-			return $('<div/>').html(html);
-
-			}
 
 	},
 	{

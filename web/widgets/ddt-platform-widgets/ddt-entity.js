@@ -93,25 +93,6 @@ DDTPlatform.DDTEntity = Class({
 					arg.type = typeof args[i];
 					}
 
-				//if (arg.type == 'Object')
-				//	{
-				//	var objStr = JSON.stringify(args[i],
-				//		function (key, value)
-				//		{
-				//		if (value instanceof HTMLElement)
-				//			{
-				//			return undefined;
-				//			}
-				//		return value;
-				//		});
-				//
-				//	arg.value = JSON.parse(objStr);
-				//	}
-				//else
-				//	{
-				//
-				//	}
-
 				arg.value = args[i];
 				}
 			argsDescription.push(arg);
@@ -244,6 +225,54 @@ DDTPlatform.DDTEntityNS.EntityDoc = Class({
 		{
 		this.currentEntry.currentStackPoint.addTriggerEvent(name, type);
 		this.trigger('entity-doc-change');
+		},
+
+	toJSON: function()
+		{
+		var properties = this.collectProperties();
+		this.jset('properties', properties);
+
+		var json = MK.Object.prototype.toJSON.apply(this, []);
+		return json;
+		},
+
+	collectProperties: function()
+		{
+		var properties = {};
+
+		var target = this.entity;
+		while (target.constructor.name != 'Entity')
+			{
+			var propertiesNames = Object.getOwnPropertyNames(target);
+
+			for (var i = 0; i < propertiesNames.length; i++)
+				{
+				var funcName = propertiesNames[i];
+				var className = target.constructor.name;
+
+				if (typeof target[funcName] !== 'function')
+					{
+					var type = 'unknown';
+					try
+						{
+						type = target[funcName].constructor.name;
+						}
+					catch (exeption)
+						{
+						type = typeof target[funcName];
+						}
+
+					properties[funcName] = {
+						name: funcName,
+						className: className,
+						type: type
+					}
+
+					}
+				}
+			target = target.__proto__;
+			}
+		return properties;
 		}
 
 });

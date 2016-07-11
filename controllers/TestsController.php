@@ -60,9 +60,7 @@ class TestsController extends Controller
 
 	public function actionTestPartial( $testJsFile)
 		{
-//		print_r(\Yii::$app->log->targets ['debug']);die;
-//		\Yii::$app->log->targets ['debug'] = null;
-		return $this->renderPartial('test', [
+		return $this->renderPartial('test-partial', [
 			'testJsFile' => $testJsFile,
 		]);
 		}
@@ -95,6 +93,7 @@ class TestsController extends Controller
 			'entityName' => $testResults[0]['entityName'],
 			'extends' => $testResults[0]['extends'],
 			'optionsDescription' => $testResults[0]['optionsDescription'],
+			'properties' => $this->collectProperties($testResults),
 			'eventsDescription' => $testResults[0]['eventsDescription'],
 			'entries' => $this->collectEntriesDescription($testResults),
 			'functions' => $this->collectFunctionsDescription($testResults),
@@ -107,6 +106,35 @@ class TestsController extends Controller
 		$docPath = implode('/', $pathParts) . '/docs/' . $doc['entityName'] . '.doc.json';
 		$writeResult = file_put_contents($docPath, json_encode($doc));
 		echo "write $writeResult byts to file: $docPath\r\n";
+		}
+
+	private function collectProperties($testResults)
+		{
+		$properties = [];
+		foreach ($testResults as $testResult)
+			{
+			foreach ($testResult['properties'] as $proposeProperty)
+				{
+				$f = 0;
+				foreach ($properties as $existProperty)
+					{
+					if($proposeProperty['name'] == $existProperty['name'])
+						{
+						$f=1;
+						if($proposeProperty['type'] != $existProperty['type'])
+							{
+							$existProperty['type'] = $existProperty['type'].' | '.$proposeProperty['type'];
+							}
+
+						}
+					}
+				if($f==0)
+					{
+					$properties[] = $proposeProperty;
+					}
+				}
+			}
+		return $properties;
 		}
 
 	private function collectEntriesDescription($testResults)

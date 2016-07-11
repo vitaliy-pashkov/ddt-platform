@@ -22,3 +22,22 @@
 	width: 100%;
 	min-height: 800px;
 }
+
+.test-result {
+	display: none;
+}
+
+.test-status {
+	font-size: 18px;
+	font-weight: bold;
+	color: orange;
+}
+
+.test-status.ok{
+	color: green;
+}
+
+.test-status.failed{
+	color: red;
+}
+
